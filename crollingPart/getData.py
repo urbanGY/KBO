@@ -2,8 +2,20 @@ import csv
 from bs4 import BeautifulSoup
 import requests
 
+'''
+doosan_b.csv
+eagles_b.csv
+kia_b.csv
+kt_b.csv
+lg_b.csv
+lotte_b.csv
+nc_b.csv
+nexen_b.csv
+samsung_b.csv
+sk_b.csv
 
-r = open('eagles_b.csv',mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
+'''
+r = open('batterList/sk_b.csv',mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
 list = r.read().splitlines()
 r.close()
 #25가 호잉
@@ -22,27 +34,56 @@ def get_data(url):
     data = soup.find_all("td",{"class":"statdata"}) #가까운 table을 찾고 그 안에 모든 td를 추출, 반환형이 string 아님
     return data
 
-def write_csv(name,data,csv_writer):
+def get_arr(data):
+    arr = []
     for i in range(0,len(data)):
             s = data[i].get_text()
             if len(s) < 1:
                 continue
             if s[len(s)-1].isdigit():
                 continue
-            else:            
+            else:
+                if data[i+20].get_text() == '' or data[i+20].get_text() == '0.000': #공백 전적 제거
+                    i += 26
+                    continue
                 a = []
                 for j in range(i+20,i+26):
                     a.append(data[j].get_text())
-                csv_writer.writerow([name,a[0],a[1],a[2],a[3],a[4],a[5]])
-                i += 26        
+                arr.append(a)    
+                i += 26
+    if len(arr) != 0:            
+        del(arr[len(arr)-1]) #통산전적 제거           
+    return arr
+
+
+def make_attribute(arr):
+    length = len(arr)
+    if length == 1:
+        return arr[0]
+    else:
+        output = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        n = 0
+        for i in range(1,length+1):
+            n += i
+        for i in range(1,length):
+            for j in range(0,6):
+                output[j] += (float(arr[i-1][j])/n)*i        
+        for i in range(0,6):
+            output[i] += float(arr[length-1][i])*(1-float(n-length)/n)
+        return output             
     
 f = open('output/'+list[0]+'.csv',mode='wt',newline='')
 url = "http://www.statiz.co.kr/player.php?opt=1&name="
 csv_writer = csv.writer(f)
 csv_writer.writerow(['이름','타율','출루','장타','ops','wOBA','wRC+'])
-for n in range(1,27):
+for n in range(1,len(list)):
     print(url+list[n])
     data = get_data(url+list[n])
-    write_csv(list[n],data,csv_writer)
+    arr = get_arr(data)
+    if len(arr) != 0:
+        attr = make_attribute(arr)    
+        csv_writer.writerow([list[n],attr[0],attr[1],attr[2],attr[3],attr[4],attr[5]])
+    else:
+        print(list[n]+' 크롤링 제대로 안됨')
 f.close()
 
