@@ -15,7 +15,7 @@ samsung_b.csv
 sk_b.csv
 
 '''
-r = open('batterList/sk_b.csv',mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
+r = open('batterList/doosan_b.csv',mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
 list = r.read().splitlines()
 r.close()
 #25가 호잉
@@ -70,6 +70,8 @@ def make_attribute(arr):
                 output[j] += (float(arr[i-1][j])/n)*i        
         for i in range(0,6):
             output[i] += float(arr[length-1][i])*(1-float(n-length)/n)
+        for i in range(0,6):
+            output[i] = round(output[i],3);
         return output             
     
 f = open('output/'+list[0]+'.csv',mode='wt',newline='')
