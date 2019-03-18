@@ -15,11 +15,6 @@ samsung_b.csv
 sk_b.csv
 
 '''
-r = open('batterList/doosan_b.csv',mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
-list = r.read().splitlines()
-r.close()
-#25가 호잉
-
 
 def get_html(url):
     output = ""
@@ -72,20 +67,25 @@ def make_attribute(arr):
             output[i] += float(arr[length-1][i])*(1-float(n-length)/n)
         for i in range(0,6):
             output[i] = round(output[i],3);
-        return output             
+        return output
     
-f = open('output/'+list[0]+'.csv',mode='wt',newline='')
-url = "http://www.statiz.co.kr/player.php?opt=1&name="
-csv_writer = csv.writer(f)
-csv_writer.writerow(['이름','타율','출루','장타','ops','wOBA','wRC+'])
-for n in range(1,len(list)):
-    print(url+list[n])
-    data = get_data(url+list[n])
-    arr = get_arr(data)
-    if len(arr) != 0:
-        attr = make_attribute(arr)    
-        csv_writer.writerow([list[n],attr[0],attr[1],attr[2],attr[3],attr[4],attr[5]])
-    else:
-        print(list[n]+' 크롤링 제대로 안됨')
-f.close()
+team = ['doosan_b.csv','eagles_b.csv','kia_b.csv','kt_b.csv','lg_b.csv','lotte_b.csv','nc_b.csv','nexen_b.csv','samsung_b.csv','sk_b.csv']
+for teamList in team:
+    r = open('batterList/'+teamList,mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
+    list = r.read().splitlines()
+    r.close()
+    f = open('output/'+list[0]+'.csv',mode='wt',newline='')
+    url = "http://www.statiz.co.kr/player.php?opt=1&name="
+    csv_writer = csv.writer(f)
+    csv_writer.writerow(['이름','타율','출루','장타','ops','wOBA','wRC+'])
+    for n in range(1,len(list)):
+        print(url+list[n])
+        data = get_data(url+list[n])
+        arr = get_arr(data)
+        if len(arr) != 0:
+            attr = make_attribute(arr)    
+            csv_writer.writerow([list[n],attr[0],attr[1],attr[2],attr[3],attr[4],attr[5]])
+        else:
+            print(list[n]+' 크롤링 제대로 안됨')
+    f.close()
 
