@@ -74,7 +74,7 @@ for teamList in team:
     r = open('batterList/'+teamList,mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
     list = r.read().splitlines()
     r.close()
-    f = open('output/'+list[0]+'.csv',mode='wt',newline='')
+    f = open('batterOutput/'+list[0]+'.csv',mode='wt',newline='')
     url = "http://www.statiz.co.kr/player.php?opt=1&name="
     csv_writer = csv.writer(f)
     csv_writer.writerow(['이름','타율','출루','장타','ops','wOBA','wRC+'])
