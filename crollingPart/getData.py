@@ -76,15 +76,16 @@ for teamList in team:
     r.close()
     f = open('batterOutput/'+list[0]+'.csv',mode='wt',newline='')
     url = "http://www.statiz.co.kr/player.php?opt=1&name="
-    csv_writer = csv.writer(f)
-    csv_writer.writerow(['이름','타율','출루','장타','ops','wOBA','wRC+'])
+    fieldnames = ['이름','타율','출루','장타','ops','wOBA','wRC+']
+    csv_writer = csv.DictWriter(f, fieldnames=fieldnames)
+    csv_writer.writeheader()
     for n in range(1,len(list)):
         print(url+list[n])
         data = get_data(url+list[n])
         arr = get_arr(data)
         if len(arr) != 0:
-            attr = make_attribute(arr)    
-            csv_writer.writerow([list[n],attr[0],attr[1],attr[2],attr[3],attr[4],attr[5]])
+            attr = make_attribute(arr)   
+            csv_writer.writerow({'이름':list[n], '타율':attr[0], '출루':attr[1], '장타':attr[2], 'ops':attr[3], 'wOBA':attr[4], 'wRC+':attr[5]})
         else:
             print(list[n]+' 크롤링 제대로 안됨')
     f.close()
