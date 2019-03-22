@@ -46,7 +46,7 @@ pitcherUrl = ['http://ncdinos.com/player/pitcher']
 batterUrl = ['http://ncdinos.com/player/catcher', 'http://ncdinos.com/player/infielder', 'http://ncdinos.com/player/outfielder']
 personUrl = 'http://ncdinos.com/player/person'
 
-r = open('./ncdinos/pitcher.csv', 'wt', newline='')
+r = open('./pitcher/ncdinos_p.csv', 'wt', newline='')
 fieldnames = ['name', 'birth']
 
 pitcherList = get_data(pitcherUrl, personUrl)
@@ -63,7 +63,7 @@ for i in range(0, len(pitcherList['name'])):
 
 r.close()
 
-r = open('./ncdinos/batter.csv', 'wt', newline='')
+r = open('./batter/ncdinos_b.csv', 'wt', newline='')
 
 writer = csv.DictWriter(r, fieldnames=fieldnames)
 writer.writeheader()
