@@ -66,10 +66,44 @@ def make_attribute(arr):
         for i in range(0,6):
             output[i] += float(arr[length-1][i])*(1-float(n-length)/n)
         for i in range(0,6):
-            output[i] = round(output[i],3);
+            output[i] = round(output[i],3)
         return output
+
+teamList = ['doosanbears','kiwoomheros','ktwiz','lottegiants','ncdinos','samsunglions','lgtwins', 'kiatigers']
+fieldnames = ['name','avg','base','slg','ops','wOBA','wRC+']
+url = "http://www.statiz.co.kr/player.php?opt=1&name="
+writeFile = open('batter.csv',mode='wt',newline='')
+csv_writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
+csv_writer.writeheader()
+
+for team in teamList:
+    f = open('./teamList/batter/' + team + '_b.csv', 'rt')
+    print('./teamList/batter/' + team + '_b.csv')
+    reader = csv.reader(f)
+    playerList = {'name': [],'birth': []}
+    for line in reader:
+        name = line[0]
+        birth = line[1]
+        if(birth != 'birth'):
+            playerList['name'].append(name)
+            playerList['birth'].append(birth)
     
-team = ['doosan_b.csv','eagles_b.csv','kia_b.csv','kt_b.csv','lg_b.csv','lotte_b.csv','nc_b.csv','nexen_b.csv','samsung_b.csv','sk_b.csv']
+    f.close()
+    
+    for index in range(0, len(playerList['name'])):
+        playerUrl = url + playerList['name'][index] + "&birth=" + playerList['birth'][index]
+        data = get_data(playerUrl)
+        arr = get_arr(data)
+        if len(arr) != 0:
+            attr = make_attribute(arr)
+            csv_writer.writerow({'name':playerList['name'][index], 'avg':attr[0], 'base':attr[1], 'slg':attr[2], 'ops':attr[3], 'wOBA':attr[4], 'wRC+':attr[5]})
+        else:
+            print(playerUrl, "크롤링 안됨")
+
+writeFile.close()
+
+
+"""
 for teamList in team:
     r = open('batterList/'+teamList,mode='rt') #선수 명단의 맨 앞부분에 해당 팀명 들어가있어야함
     list = r.read().splitlines()
@@ -89,4 +123,4 @@ for teamList in team:
         else:
             print(list[n]+' 크롤링 제대로 안됨')
     f.close()
-
+"""

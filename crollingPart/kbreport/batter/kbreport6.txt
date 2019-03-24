@@ -1,0 +1,3165 @@
+<table class="ltb-table responsive">
+							<tbody><tr>
+								<th width="20px">#</th>
+								
+									<th width="80px" onclick="f_order('playerName','ASC')" class="">선수명</th>
+								
+									<th onclick="f_order('teamName','ASC')" class="line">팀명</th>
+								
+									<th onclick="f_order('TPA','DESC')" class="order data">타석</th>
+								
+									<th onclick="f_order('AVG','DESC')" class="data">타율</th>
+								
+									<th onclick="f_order('BABIP','DESC')" class="data">BABIP</th>
+								
+									<th onclick="f_order('BBP','DESC')" class="data">볼넷%</th>
+								
+									<th onclick="f_order('KP','DESC')" class="data line">삼진%</th>
+								
+									<th onclick="f_order('BBK','DESC')" class="data line">볼/삼</th>
+								
+									<th onclick="f_order('ISO','DESC')" class="data line">ISO</th>
+								
+									<th onclick="f_order('ABPHR','DESC')" class="data line">타수/홈런</th>
+								
+									<th onclick="f_order('OPS','DESC')" class="data">OPS</th>
+								
+									<th onclick="f_order('RC','DESC')" class="data">RC</th>
+								
+									<th onclick="f_order('RC27','DESC')" class="data">RC/27</th>
+								
+									<th onclick="f_order('wRC','DESC')" class="data line">wRC</th>
+								
+									<th onclick="f_order('SPD','DESC')" class="data">SPD</th>
+								
+									<th onclick="f_order('wSB','DESC')" class="data line">wSB</th>
+								
+									<th onclick="f_order('wOBA','DESC')" class="data">wOBA</th>
+								
+									<th onclick="f_order('wRAA','DESC')" class="data line">wRAA</th>
+								
+									<th onclick="f_order('oWAR','DESC')" class="data">WAR</th>
+								
+							</tr>
+							
+							<tr>
+								<td>101</td>
+								
+										
+											
+												<td data-playerid="1311" class=""><a href="/player/detail/1311" class="player-link">지성준</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=8&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">한화</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">224</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.275</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.342</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">24.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.22</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.136</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">29.57</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.731</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">26.36</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.48</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">24.57</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.07</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.62</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.313</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-6.90</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.56</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>102</td>
+								
+										
+											
+												<td data-playerid="270" class=""><a href="/player/detail/270" class="player-link">장영석</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=4&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">넥센</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">221</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.224</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.289</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">10.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">27.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.38</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.184</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">28.00</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.720</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">26.38</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.63</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">24.02</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.36</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.53</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.312</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-7.03</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.15</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>103</td>
+								
+										
+											
+												<td data-playerid="23" class=""><a href="/player/detail/23" class="player-link">정범모</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=7&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">NC</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">219</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.179</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.236</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">28.3</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.24</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.110</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">47.50</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.539</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">14.84</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.36</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">8.05</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.21</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.46</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.239</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-22.71</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.99</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>104</td>
+								
+										
+											
+												<td data-playerid="576" class=""><a href="/player/detail/576" class="player-link">정진기</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=6&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">SK</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">212</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.244</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.301</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">21.2</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.13</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.094</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">67.00</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.611</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">18.94</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.22</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">12.79</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.49</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-0.27</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.263</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-16.99</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-1.23</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>105</td>
+								
+										
+											
+												<td data-playerid="1530" class=""><a href="/player/detail/1530" class="player-link">김성훈</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=2&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">삼성</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">212</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.243</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.274</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">10.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.70</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.081</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.645</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">20.84</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.68</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">18.37</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.67</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-1.72</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.290</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-11.41</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.48</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>106</td>
+								
+										
+											
+												<td data-playerid="891" class=""><a href="/player/detail/891" class="player-link">강한울</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=2&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">삼성</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">209</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.259</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.314</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.7</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">16.3</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.35</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.047</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.612</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">18.18</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">14.96</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.47</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-1.40</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.274</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-14.40</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.86</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>107</td>
+								
+										
+											
+												<td data-playerid="1559" class=""><a href="/player/detail/1559" class="player-link">가르시아</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=5&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">LG</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">206</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.339</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.346</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">12.1</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.36</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.180</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">22.88</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.902</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">38.81</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">8.06</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">35.33</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.51</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">1.01</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.375</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">6.39</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">1.45</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>108</td>
+								
+										
+											
+												<td data-playerid="310" class=""><a href="/player/detail/310" class="player-link">정성훈</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=3&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">KIA</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">205</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.295</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.382</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">23.9</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.33</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.126</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">45.75</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.787</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">28.06</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.57</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">28.21</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.37</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.09</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.341</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-0.59</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.44</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>109</td>
+								
+										
+											
+												<td data-playerid="390" class=""><a href="/player/detail/390" class="player-link">이상호</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=7&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">NC</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">204</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.251</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.273</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.9</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">7.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.53</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.011</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.551</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">13.21</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.24</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">9.82</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.35</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-1.18</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.251</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-18.84</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-1.43</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>110</td>
+								
+										
+											
+												<td data-playerid="454" class=""><a href="/player/detail/454" class="player-link">이지영</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=2&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">삼성</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">203</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.343</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.396</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">13.3</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.56</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.090</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">89.00</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.839</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">32.13</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.94</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">33.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.11</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.63</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.368</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">4.73</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">1.68</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>111</td>
+								
+										
+											
+												<td data-playerid="1520" class=""><a href="/player/detail/1520" class="player-link">나종덕</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=9&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">롯데</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">203</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.124</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.222</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.9</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">41.9</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.14</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.051</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">88.50</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.376</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.31</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">1.19</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-4.54</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.33</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.32</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.179</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-33.06</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-2.27</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>112</td>
+								
+										
+											
+												<td data-playerid="1394" class=""><a href="/player/detail/1394" class="player-link">조수행</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=1&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">두산</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">198</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.279</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.333</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">16.7</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.27</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.093</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">183.00</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.683</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">22.14</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.21</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">18.19</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">8.82</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">1.23</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.295</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-9.63</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.29</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>113</td>
+								
+										
+											
+												<td data-playerid="743" class=""><a href="/player/detail/743" class="player-link">박기혁</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=15&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">KT</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">196</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.214</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.288</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">25.5</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.26</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.052</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">173.00</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.538</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">12.41</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.20</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">8.15</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">1.61</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.51</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.244</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-19.38</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-1.10</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>114</td>
+								
+										
+											
+												<td data-playerid="752" class=""><a href="/player/detail/752" class="player-link">정훈</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=9&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">롯데</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">194</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.305</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.351</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">8.2</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">20.1</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.41</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.189</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">24.86</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.855</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">30.81</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.40</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">29.92</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.69</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-0.35</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.358</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">2.67</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.80</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>115</td>
+								
+										
+											
+												<td data-playerid="649" class=""><a href="/player/detail/649" class="player-link">박세혁</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=1&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">두산</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">194</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.282</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.398</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">8.2</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">28.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.29</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.124</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">56.67</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.762</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">27.69</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">5.93</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">25.27</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.63</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.92</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.334</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-1.98</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.91</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>116</td>
+								
+										
+											
+												<td data-playerid="314" class=""><a href="/player/detail/314" class="player-link">김용의</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=5&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">LG</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">185</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.233</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.285</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">8.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">17.3</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.50</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.012</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.543</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">14.82</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.01</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">9.08</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.71</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.78</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.252</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-16.91</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-1.50</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>117</td>
+								
+										
+											
+												<td data-playerid="654" class=""><a href="/player/detail/654" class="player-link">최준석</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=7&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">NC</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">179</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.255</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.318</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">13.4</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">22.9</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.58</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.098</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">38.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.705</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">19.63</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.34</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">20.90</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.15</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.52</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.320</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-4.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.14</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>118</td>
+								
+										
+											
+												<td data-playerid="1283" class=""><a href="/player/detail/1283" class="player-link">안중열</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=9&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">롯데</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">176</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.247</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.362</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">6.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">31.8</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.21</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.149</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">38.50</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.710</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">19.05</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.08</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">18.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">1.86</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.36</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.307</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-6.47</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.43</td>
+											
+										
+								
+							
+							</tr><tr>
+								<td>119</td>
+								
+										
+											
+												<td data-playerid="215" class=""><a href="/player/detail/215" class="player-link">이해창</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=15&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">KT</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">174</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.216</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.257</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.6</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">28.2</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.16</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.173</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">20.25</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.655</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">15.26</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.07</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">12.81</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">2.72</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-1.32</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.276</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-11.64</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.44</td>
+											
+										
+								
+							
+							</tr><tr class="even">
+								<td>120</td>
+								
+										
+											
+												<td data-playerid="372" class=""><a href="/player/detail/372" class="player-link">백창수</a></td>
+											
+											
+											
+										
+								
+										
+											
+											
+												<td class="line"><a href="/leader/main?rows=20&amp;teamId=8&amp;defense_no=&amp;year_from=2018&amp;year_to=2018&amp;split01=&amp;split02=&amp;&amp;tpa_count=0" class="player-link">한화</a></td>
+											
+											
+										
+								
+										
+											
+											
+											
+												<td class="data order">169</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.243</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.298</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">7.1</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">21.3</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.33</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.171</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">50.67</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.728</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">19.40</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">4.33</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">18.24</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">3.85</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">0.40</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">0.311</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data line">-5.50</td>
+											
+										
+								
+										
+											
+											
+											
+												<td class="data">-0.21</td>
+											
+										
+								
+							
+						</tr></tbody></table>
