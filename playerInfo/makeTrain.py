@@ -33,12 +33,15 @@ def make_inning(inning, list):
 def make_before(before, list):
     death = before[0]
     if death == '1':
+        list.append(0)
         list.append(1)
         list.append(0)
     elif death == '2':
-        list.append(1)
+        list.append(0)
+        list.append(0)
         list.append(1)
     else :
+        list.append(1)
         list.append(0)
         list.append(0)
 
@@ -63,8 +66,25 @@ def make_before(before, list):
             list.append(0)
     return list
 
+def make_result(result, list):
+    length = len(result)
+    word = result[length-2:length]
+    if word == '안타' or word == '루타' or word == '홈런':
+        list.append(0)
+        list.append(1)
+        list.append(0)
+    elif word == ' 볼' or word == '볼넷':
+        list.append(0)
+        list.append(0)
+        list.append(1)
+    else:
+        list.append(1)
+        list.append(0)
+        list.append(0)
+    return list
+
 teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
-fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','death','death','base_1','base_2','base_3']
+fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball']
 
 # batter_class_size = 3
 # pitcher_class_size = 4
@@ -99,8 +119,9 @@ for team in teamName:
             attribute = make_date(day[0],attribute)
             attribute = make_inning(day[2],attribute)
             attribute = make_before(day[9],attribute)
+            attribute = make_result(day[8],attribute)
             if len(attribute) != 0:
-                csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'death':attribute[12],'death':attribute[13],'base_1':attribute[14],'base_2':attribute[15],'base_3':attribute[16]})
+                csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'no out':attribute[12],'1 out':attribute[13],'2 out':attribute[14],'base_1':attribute[15],'base_2':attribute[16],'base_3':attribute[17],'out':attribute[18],'hit':attribute[19],'ball':attribute[20]})
                 attribute = []
 
         writeFile.close()
