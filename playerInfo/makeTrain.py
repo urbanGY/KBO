@@ -84,7 +84,7 @@ def make_result(result, list):
     return list
 
 teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
-fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball']
+fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
 # batter_class_size = 3
 # pitcher_class_size = 4
@@ -120,8 +120,12 @@ for team in teamName:
             attribute = make_inning(day[2],attribute)
             attribute = make_before(day[9],attribute)
             attribute = make_result(day[8],attribute)
+            attribute.append(day[5])
+            attribute.append(day[6])
+            attribute.append(day[3])
+            attribute.append(day[4])
             if len(attribute) != 0:
-                csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'no out':attribute[12],'1 out':attribute[13],'2 out':attribute[14],'base_1':attribute[15],'base_2':attribute[16],'base_3':attribute[17],'out':attribute[18],'hit':attribute[19],'ball':attribute[20]})
+                csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'no out':attribute[12],'1 out':attribute[13],'2 out':attribute[14],'base_1':attribute[15],'base_2':attribute[16],'base_3':attribute[17],'out':attribute[18],'hit':attribute[19],'ball':attribute[20],'batterName':attribute[21],'batterClass':attribute[22],'pitcherName':attribute[23],'pitcherClass':attribute[24]})
                 attribute = []
 
         writeFile.close()
