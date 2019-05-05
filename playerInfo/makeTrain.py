@@ -86,6 +86,23 @@ def make_result(result, list):
 teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
 fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
+batter_class_f = open('../clustering/clusterOutput/classification.csv', mode='rt',newline='')#기존 train file 가져옴
+batter_class_reader = list(csv.reader(batter_class_f))#타자 class dictionary
+#pitcher_class_f = open('location', mode='rt',newline='')#기존 train file 가져옴
+#pitcher_class_reader = csv.reader(pitcher_class_f)#투수 class dictionary
+
+batter_class_num = 4
+pitcher_class_num = 4
+def get_batter_class(name): #batter class 찾는 함수
+    for line in batter_class_reader:
+        for i in range(batter_class_num):
+            if line[i] == name:
+                return i
+    return -1
+
+#get_pitcher_class func
+
+
 # batter_class_size = 3
 # pitcher_class_size = 4
 # batter_class = []
@@ -105,12 +122,14 @@ for team in teamName:
     for line in team_reader:
         if line[0] == 'name':
             continue
+        batter_class = get_batter_class(line[0])#타자 class 미리 추출
         player_f = open('./batter/' + team + '/'+ line[0]+'.csv', 'rt')
         player_reader = csv.reader(player_f)
         writeFile = open('./train/'+ team +'/'+ line[0] +'.csv',mode='wt',newline='')
         csv_writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
         csv_writer.writeheader()
         attribute = []
+
         for day in player_reader:
             #0 - date, 2 - inning, 4 - p_class, 6 - b_class, result - 8, before - 9
             # 000000000 month, 000 inning, 00 death, 000 base
@@ -120,10 +139,10 @@ for team in teamName:
             attribute = make_inning(day[2],attribute)
             attribute = make_before(day[9],attribute)
             attribute = make_result(day[8],attribute)
-            attribute.append(day[5])
-            attribute.append(day[6])
-            attribute.append(day[3])
-            attribute.append(day[4])
+            attribute.append(day[5])#batter Name
+            attribute.append(batter_class)#batter class
+            attribute.append(day[3])#pither name
+            attribute.append(day[4])#pitcher class
             if len(attribute) != 0:
                 csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'no out':attribute[12],'1 out':attribute[13],'2 out':attribute[14],'base_1':attribute[15],'base_2':attribute[16],'base_3':attribute[17],'out':attribute[18],'hit':attribute[19],'ball':attribute[20],'batterName':attribute[21],'batterClass':attribute[22],'pitcherName':attribute[23],'pitcherClass':attribute[24]})
                 attribute = []
@@ -132,3 +151,4 @@ for team in teamName:
         player_f.close()
         print('finish make train ',line[0],'file!')
     team_f.close()
+batter_class_f.close()
