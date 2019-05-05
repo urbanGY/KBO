@@ -30,6 +30,7 @@ def GetData(name):
 #YEAR  HR%   BB%   K%   IsoP
 #연도 홈런%  볼넷%  삼진% 절대장타율(장타율-타율)
 
+
 def GetData_first(name, index):
     req = requests.get("http://old.statiz.co.kr/stat.php?mid=stat&re=0&ys=2015&ye=2018&se=0&ty=0&qu=auto&po=0&pl="+name+"&da=1&o1=Year&o2=TPA")
     cont = req.content
@@ -38,6 +39,15 @@ def GetData_first(name, index):
     data = soup.find_all("td", {"class": "statdata"})
 
     for i in range(0, 4):
+        stat = (float)(data[i * 29 + 3].get_text())
+        DataList[(index - 1) * 4 + (i + 1)].append(stat)
+        for k in range(6, 10):
+            stat = (float)(data[i * 29 + k].get_text())
+            DataList[(index - 1) * 4 + (i + 1)].append(stat)
+        stat = (float)(data[i * 29 + 14].get_text())
+        DataList[(index - 1) * 4 + (i + 1)].append(stat)
+        stat = (float)(data[i * 29 + 17].get_text())
+        DataList[(index - 1) * 4 + (i + 1)].append(stat)
         for k in range(21, 24):
             stat = (float)(data[i * 29 + k].get_text())
             DataList[(index - 1) * 4 + (i + 1)].append(stat)
@@ -119,8 +129,7 @@ for name in nameList:
     index += 1
 
     i = 0
-
-titleList_1 = ['이름', '연도', '홈런%', '볼넷%', '삼진%', '절대장타율', '타율', '출루율', '장타율', '뜬공/땅볼', '장타/안타', 'RAA']
+titleList_1 = ['이름', '연도', '홈런%', '볼넷%', '삼진%', '절대장타율', '타석', '안타', '2루타', '3루타', '홈런', '볼넷', '삼진', '타율', '출루율', '장타율', '뜬공/땅볼', '장타/안타', 'RAA']
 resultList = DataList + BallValueList + BallPerList
 csvfile = open("test.csv", "wt", newline="")
 csvheaderwriter = csv.DictWriter(csvfile, fieldnames=titleList_1)
