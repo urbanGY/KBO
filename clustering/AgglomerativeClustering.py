@@ -1,9 +1,9 @@
-from sklearn.cluster import KMeans
+from sklearn.cluster import AgglomerativeClustering
+
 import pandas as pd
 import numpy as np
 import csv
-
-kmeans = KMeans(n_clusters=10, n_init = 2000)
+agg = AgglomerativeClustering(n_clusters=8)
 
 headerList = ['이름', '홈런%', '볼넷%', '삼진%', '절대장타율', '타석','안타','2루타','3루타','홈런','볼넷','삼진', '타율', '출루율', '장타율', '뜬/땅', 'RAA']
 df = pd.DataFrame(columns=(headerList[5], headerList[6], headerList[7], headerList[8], headerList[9], headerList[10], headerList[11]))
@@ -31,9 +31,9 @@ for line in reader:
 f.close()
 
 
-kmeans.fit(df)
-factor = kmeans.predict(df)
+factor = agg.fit_predict(df)
 
+print(np.bincount(factor))
 result = []
 zxczx = np.bincount(factor)
 
@@ -43,29 +43,5 @@ for _ in range(0, len(zxczx)):
 for index in range(0, i):
         result[factor[index]].append(name[index])
 
-maxLen = 0
 for zcv in result:
-        if maxLen < len(zcv):
-                maxLen = len(zcv)
         print(zcv)
-
-f = open('./clusterOutput/classification_batter.csv', mode = 'wt', newline = '')
-field = []
-for i in range(0, len(result)):
-        field.append(i)
-
-csv_writer = csv.DictWriter(f, fieldnames=field)
-csv_writer.writeheader()
-
-for i in range(0, maxLen):
-        tmp = {}
-        for j in range(0, len(result)):
-                if len(result[j]) <= i:
-                        tmp[j] = '공백'
-                else:
-                        tmp[j] = result[j][i]
-        csv_writer.writerow(tmp)
-
-f.close()                
-
-

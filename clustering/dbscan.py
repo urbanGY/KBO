@@ -1,9 +1,7 @@
-from sklearn.cluster import KMeans
+from sklearn.cluster import DBSCAN
+import csv
 import pandas as pd
 import numpy as np
-import csv
-
-kmeans = KMeans(n_clusters=10, n_init = 2000)
 
 headerList = ['이름', '홈런%', '볼넷%', '삼진%', '절대장타율', '타석','안타','2루타','3루타','홈런','볼넷','삼진', '타율', '출루율', '장타율', '뜬/땅', 'RAA']
 df = pd.DataFrame(columns=(headerList[5], headerList[6], headerList[7], headerList[8], headerList[9], headerList[10], headerList[11]))
@@ -29,43 +27,41 @@ for line in reader:
                 df.loc[index][j - 6] = df.loc[index][j - 6] + float(line[j])
 
 f.close()
+bMax = -1
+clusterMax = -1
 
+for min_samples in range(1, 200):
+    for eps in range(1, 200):
+        
+        cluster = DBSCAN(min_samples=min_samples, eps=eps).fit_predict(df)
+        bin = np.bincount(cluster + 1)
+        sum = 0
+        for s in bin:
+            sum += s
+        sum = sum / len(bin)
+        b = 0
+        for s in bin:
+            b += abs(sum - s)
+        if (bMax == -1 or b < bMax) and len(bin) > 8 and sum > 5:
+            bMax = b
+            clusterMax = cluster
+print(clusterMax)
+bin = np.bincount(clusterMax + 1)
+print(len(bin))
+print(bin)
 
-kmeans.fit(df)
-factor = kmeans.predict(df)
-
-result = []
-zxczx = np.bincount(factor)
-
-for _ in range(0, len(zxczx)):
-        result.append([])
+ss = []
+tt = []
+for _ in range(0, len(bin)):
+    ss.append([])
 
 for index in range(0, i):
-        result[factor[index]].append(name[index])
+    if clusterMax[index] == -1:
+        tt.append(name[index])
+    else:
+        ss[clusterMax[index]].append(name[index])
+#    print(clusterMax[index], name[index])
 
-maxLen = 0
-for zcv in result:
-        if maxLen < len(zcv):
-                maxLen = len(zcv)
-        print(zcv)
-
-f = open('./clusterOutput/classification_batter.csv', mode = 'wt', newline = '')
-field = []
-for i in range(0, len(result)):
-        field.append(i)
-
-csv_writer = csv.DictWriter(f, fieldnames=field)
-csv_writer.writeheader()
-
-for i in range(0, maxLen):
-        tmp = {}
-        for j in range(0, len(result)):
-                if len(result[j]) <= i:
-                        tmp[j] = '공백'
-                else:
-                        tmp[j] = result[j][i]
-        csv_writer.writerow(tmp)
-
-f.close()                
-
-
+#print(tt)
+for qq in ss:
+    print(qq)

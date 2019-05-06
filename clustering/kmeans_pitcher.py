@@ -48,8 +48,8 @@ for zcv in result:
         if maxLen < len(zcv):
                 maxLen = len(zcv)
         print(zcv)
-
-f = open('./clusterOutput/classification_batter.csv', mode = 'wt', newline = '')
+"""
+f = open('./clusterOutput/classification_pitcher.csv', mode = 'wt', newline = '')
 field = []
 for i in range(0, len(result)):
         field.append(i)
@@ -67,5 +67,5 @@ for i in range(0, maxLen):
         csv_writer.writerow(tmp)
 
 f.close()                
-
+"""
 
