@@ -86,13 +86,13 @@ def make_result(result, list):
 teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
 fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
-batter_class_f = open('../clustering/clusterOutput/classification.csv', mode='rt',newline='')#기존 train file 가져옴
+batter_class_f = open('../clustering/clusterOutput/classification_batter.csv', mode='rt',newline='')#기존 train file 가져옴
 batter_class_reader = list(csv.reader(batter_class_f))#타자 class dictionary
-#pitcher_class_f = open('location', mode='rt',newline='')#기존 train file 가져옴
-#pitcher_class_reader = csv.reader(pitcher_class_f)#투수 class dictionary
+pitcher_class_f = open('../clustering/clusterOutput/classification_pitcher.csv', mode='rt',newline='')#기존 train file 가져옴
+pitcher_class_reader = list(csv.reader(pitcher_class_f))#투수 class dictionary
 
-batter_class_num = 4
-pitcher_class_num = 4
+batter_class_num = len(batter_class_reader[0])
+pitcher_class_num = len(pitcher_class_reader[0])
 def get_batter_class(name): #batter class 찾는 함수
     for line in batter_class_reader:
         for i in range(batter_class_num):
@@ -100,7 +100,12 @@ def get_batter_class(name): #batter class 찾는 함수
                 return i
     return -1
 
-#get_pitcher_class func
+def get_pitcher_class(name): #batter class 찾는 함수
+    for line in pitcher_class_reader:
+        for i in range(pitcher_class_num):
+            if line[i] == name:
+                return i
+    return -1
 
 
 # batter_class_size = 3
@@ -142,7 +147,7 @@ for team in teamName:
             attribute.append(day[5])#batter Name
             attribute.append(batter_class)#batter class
             attribute.append(day[3])#pither name
-            attribute.append(day[4])#pitcher class
+            attribute.append(get_pitcher_class(day[3]))#pitcher class
             if len(attribute) != 0:
                 csv_writer.writerow({'3':attribute[0],'4':attribute[1],'5':attribute[2],'6':attribute[3],'7':attribute[4],'8':attribute[5],'9':attribute[6],'10':attribute[7],'11':attribute[8],'1 - 3 inning':attribute[9],'4 - 6 inning':attribute[10],'7 - ? inning':attribute[11],'no out':attribute[12],'1 out':attribute[13],'2 out':attribute[14],'base_1':attribute[15],'base_2':attribute[16],'base_3':attribute[17],'out':attribute[18],'hit':attribute[19],'ball':attribute[20],'batterName':attribute[21],'batterClass':attribute[22],'pitcherName':attribute[23],'pitcherClass':attribute[24]})
                 attribute = []
