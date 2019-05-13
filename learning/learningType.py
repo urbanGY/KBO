@@ -78,6 +78,7 @@ for batter_index in range(batter_class_num):
         iterator = dataset.make_initializable_iterator()
         next_element = iterator.get_next()
 
+        saver = tf.train.Saver()
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             sess.run(iterator.initializer)
@@ -90,4 +91,5 @@ for batter_index in range(batter_class_num):
                     print("predict : ",predict_y[31]," , real : ",y_data[31])
                     print("step : %d, 손실 함수(loss): %f" % (i, loss_print))
                 sess.run(train_step, feed_dict={x: x_data, y: y_data})
-        print('[',batter_index,']','[',pither_index,'] learning end !\n\n')
+            print('[',batter_index,']','[',pither_index,'] learning end !\n\n')
+            saver.save(sess, './models/'+str(batter_index)+'-'+str(pither_index)+'.ckpt')    
