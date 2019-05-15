@@ -2,14 +2,14 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-fieldNames = ['이름', 'G', '타석', '타수', '득점', '안타', '2타', '3타', '홈런', '루타', '타점', '볼넷', '사구', '고4', '삼진']
+fieldNames = ['이름', '출장', '완투', '완봉', '선발', '승', '패', '세', '홀드', '이닝', '실점', '자책', '타자', '안타', '홈런', '볼넷', '고4', '사구', '삼진', '보크', '폭투']
 
-teamList = ['doosanbears', 'hanwhaeagles', 'kiatigers', 'kiwoomheros', 'ktwiz', 'lgtwins', 'lottegiants', 'ncdinos', 'samsunglions', 'skwyverns']
-writeFile = open("batter.csv", "wt", newline="")
+teamList = ['doosanbears', 'hanwhaeagles', 'kiatigers', 'kiwoomheroes', 'ktwiz', 'lgtwins', 'lottegiants', 'ncdinos', 'samsunglions', 'skwyverns']
+writeFile = open("pitcher.csv", "wt", newline="")
 csvheaderwriter = csv.writer(writeFile)
 csvheaderwriter.writerow(fieldNames)
 for team in teamList:
-    file = open("./teamList/batter/" + team + '_b.csv', mode='r')
+    file = open("./teamList/pitcher/" + team + '_p.csv', mode='r')
     reader = csv.reader(file)
     for line in reader:
         if line[0] != "name":
@@ -24,17 +24,12 @@ for team in teamList:
                 if flag == True :
                     index = index + 1
                     p = str(line).split('</span>')[0].split('>')[-1]
-                    if 2 <= index and index <= 11:
+                    if 1 <= index and index <= 20:
                         try:
-                            fields.append(int(p))
+                            fields.append(float(p))
                         except ValueError:
                             fields.append(0)
-                    elif 14 <= index and index <= 17:
-                        try:
-                            fields.append(int(p))
-                        except ValueError:
-                            fields.append(0)
-                    elif index == 18:
+                    elif index == 21:
                         flag = False
                 if line.previous_element == '통산':
                     flag = True
