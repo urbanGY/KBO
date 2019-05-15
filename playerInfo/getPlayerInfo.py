@@ -20,10 +20,11 @@ def get_data(url):
     return data
 
 
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
-yearList = ['2017','2016','2015','2014']
+teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
+#yearList = ['2017','2016','2015','2014']
 fieldnames = ['date','opponent','inning','pitcher','p_class','batter','b_class','P','result','before']
 
+yearList = ['2018','2019'] #for test data
 for team in teamName:
     team_f = open('../crollingPart/teamList/batter/' + team + '_b.csv', 'rt')
     team_reader = csv.reader(team_f)
@@ -39,7 +40,7 @@ for team in teamName:
 
      # 2018은 validate data 로 별도로 분리
     for i in range(0, len(playerList['name'])):
-        writeFile = open('./batter/'+ team +'/'+ playerList['name'][i] +'.csv',mode='wt',newline='')
+        writeFile = open('./batter_test/'+ team +'/'+ playerList['name'][i] +'.csv',mode='wt',newline='')
         csv_writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
         csv_writer.writeheader()
         for year in yearList:

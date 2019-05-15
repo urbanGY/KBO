@@ -83,7 +83,7 @@ def make_result(result, list):
         list.append(0)
     return list
 
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
+teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
 fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
 batter_class_f = open('../clustering/clusterOutput/classification_batter.csv', mode='rt',newline='')#기존 train file 가져옴
@@ -128,9 +128,9 @@ for team in teamName:
         if line[0] == 'name':
             continue
         batter_class = get_batter_class(line[0])#타자 class 미리 추출
-        player_f = open('./batter/' + team + '/'+ line[0]+'.csv', 'rt')
+        player_f = open('./batter_test/' + team + '/'+ line[0]+'.csv', 'rt')
         player_reader = csv.reader(player_f)
-        writeFile = open('./train/'+ team +'/'+ line[0] +'.csv',mode='wt',newline='')
+        writeFile = open('./test/'+ team +'/'+ line[0] +'.csv',mode='wt',newline='')
         csv_writer = csv.DictWriter(writeFile, fieldnames=fieldnames)
         csv_writer.writeheader()
         attribute = []

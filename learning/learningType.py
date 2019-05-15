@@ -24,7 +24,7 @@ for i in range(batter_class_num):
 
 
 #위에서 생성한 틀에 맞춰서 학습시켜야 할 내용 체움
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
+teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
 fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 #21 b_name, 22 b_class, 23 p_name, 24 p_class
 for team in teamName:
@@ -36,7 +36,7 @@ for team in teamName:
         player_data = open('../playerInfo/train/' + team + '/'+ line[0] +'.csv', 'rt')
         player_reader = csv.reader(player_data)
         for record in player_reader:
-            if record[0] == '3' or record[22] == '-1' or record[24] == '-1':
+            if record[0] == '3' or record[22] == '-1' or record[24] == '-1': #둘중 하나만 -1이면 list에 안가져옴
                 continue
             bat_index = int(record[22])
             pit_index = int(record[24])
@@ -92,4 +92,4 @@ for batter_index in range(batter_class_num):
                     print("step : %d, 손실 함수(loss): %f" % (i, loss_print))
                 sess.run(train_step, feed_dict={x: x_data, y: y_data})
             print('[',batter_index,']','[',pither_index,'] learning end !\n\n')
-            saver.save(sess, './models/'+str(batter_index)+'-'+str(pither_index)+'.ckpt')    
+            saver.save(sess, './models/'+str(batter_index)+'-'+str(pither_index)+'.ckpt')
