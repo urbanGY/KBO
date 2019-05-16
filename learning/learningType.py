@@ -24,7 +24,7 @@ for i in range(batter_class_num):
 
 
 #위에서 생성한 틀에 맞춰서 학습시켜야 할 내용 체움
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
+teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
 #fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass'] default
 fieldnames = ['1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_o','base_x','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 #21 b_name, 22 b_class, 23 p_name, 24 p_class
@@ -59,11 +59,28 @@ label_size = len(labelList[0][0][0]) #결과 차원 수
 #각 유형별 학습을 진행해 각각의 model을 생성한다
 x = tf.placeholder("float", [None,train_size])
 y = tf.placeholder("float", [None,label_size])
-w = tf.Variable(tf.truncated_normal(shape=[train_size, label_size], stddev=5e-2), name='weight')
-b = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias')
+keep_prob = tf.placeholder(tf.float32)
 
-logits = tf.matmul(x,w)+b
+w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight')
+b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+h_fc1 = tf.nn.relu(tf.matmul(x, w_1) + b_1)
+h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+
+w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight')
+b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias')
+h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, w_2) + b_2)
+h_fc2_drop = tf.nn.dropout(h_fc2, keep_prob)
+
+w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight')
+b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+h_fc3 = tf.nn.relu(tf.matmul(h_fc2_drop, w_3) + b_3)
+h_fc3_drop = tf.nn.dropout(h_fc3, keep_prob)
+
+w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight')
+b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias')
+logits = tf.matmul(h_fc3_drop,w_4)+b_4
 y_pred = tf.nn.softmax(logits)
+
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits))
 train_step = tf.train.GradientDescentOptimizer(1e-3).minimize(loss)
 
@@ -73,6 +90,7 @@ train_step = tf.train.GradientDescentOptimizer(1e-3).minimize(loss)
 
 for batter_index in range(batter_class_num):
     for pither_index in range(pitcher_class_num):
+        t_size = len(trainList[batter_index][pither_index])
         dataset = tf.data.Dataset.from_tensor_slices((trainList[batter_index][pither_index],labelList[batter_index][pither_index]))
         dataset = dataset.repeat()
         dataset = dataset.shuffle(len(trainList[batter_index][pither_index])*2)
@@ -85,13 +103,13 @@ for batter_index in range(batter_class_num):
             sess.run(tf.global_variables_initializer())
             sess.run(iterator.initializer)
             print('[',batter_index,']','[',pither_index,'] learning start !')
-            for i in range(3001):
+            for i in range(t_size*16):
                 x_data, y_data = sess.run(next_element)
-                if i == 0 or i == 3000:
-                    loss_print = sess.run(loss, feed_dict={x: x_data, y: y_data})
-                    predict_y = sess.run(y_pred, feed_dict={x:x_data})
-                    print("predict : ",predict_y[31]," , real : ",y_data[31])
+                if i == 0 or i == (t_size*16)-1:
+                    loss_print = sess.run(loss, feed_dict={x: x_data, y: y_data, keep_prob: 1.0})
+                    predict_y = sess.run(y_pred, feed_dict={x:x_data, keep_prob: 1.0})
+                    print("predict : ",predict_y[0]," , real : ",y_data[0])
                     print("step : %d, 손실 함수(loss): %f" % (i, loss_print))
-                sess.run(train_step, feed_dict={x: x_data, y: y_data})
+                sess.run(train_step, feed_dict={x: x_data, y: y_data, keep_prob: 0.9})
             print('[',batter_index,']','[',pither_index,'] learning end !\n\n')
             saver.save(sess, './models/'+str(batter_index)+'-'+str(pither_index)+'.ckpt')

@@ -1,148 +1,127 @@
 import tensorflow as tf
 import csv
 
-def getResult(y):
-    if y[0] is '1':
-        return '아웃'
-    if y[1] is '1':
-        return '안타'
-    if y[2] is '1':
-        return '볼넷'
+def getIndex(list):
+    for n in range(len(list)):
+        if list[n] == '1':
+            return n
 
-def showSplitClass(b, p, list, clas):
-    splitClass = []
-    for i in range(b):
-        v = []
-        for j in range(p):
-            tmp = []
-            v.append(tmp)
-        splitClass.append(v)
-    for i in range(len(list)):
-        splitClass[clas[i][0]][clas[i][1]].append(list[i])
-    for i in range(b):
-        for j in range(p):
-            print('b : ',i,' , p : ',j)
-            for x in splitClass[i][j]:
-                print(x)
-            print('')
+def getHit(list):
+    hit_cnt = 0
+    out_cnt = 0
+    for n in list:
+        if n == 0:
+            out_cnt += 1
+        if n == 1:
+            hit_cnt += 1
+    hit = hit_cnt/len(list)
+    go = 1-(out_cnt/len(list))
+    return hit, go
 
-def showLimit(b, p, list):
-    for i in range(b):
-        for j in range(p):
-            print('b : ',i,' , p : ',j)
-            hit_a = 0
-            go_a = 0
-            count_a = 0
-
-            hit_b = 0
-            go_b = 0
-            count_b = 0
-
-            hit_c = 0
-            go_c = 0
-            count_c = 0
-            for x in list[i][j]:
-                if x[2] == '안타':
-                    hit_a += x[0]
-                    go_a += x[1]
-                    count_a += 1
-                if x[2] == '볼넷':
-                    hit_b += x[0]
-                    go_b += x[1]
-                    count_b += 1
-                if x[2] == '아웃':
-                    hit_c += x[0]
-                    go_c += x[1]
-                    count_c += 1
-            if count_a is 0 or count_b is 0 or count_c is 0:
-                continue
-            print('안타일 때 예측 타율 평균 : ',hit_a/count_a,', 예측 출루 평균 : ',go_a/count_a)
-            print('볼넷일 때 예측 타율 평균 : ',hit_b/count_b,', 예측 출루 평균 : ',go_b/count_b)
-            print('아웃일 때 예측 타율 평균 : ',hit_c/count_c,', 예측 출루 평균 : ',go_c/count_c)
-            print('')
-
-
-
-
-x_data = []
-y_data = []
-classifier = []
-player_data = open('../playerInfo/test/doosanbears/오재원.csv', 'rt')
-player_reader = csv.reader(player_data)
-
-for record in player_reader:
-    if record[0] == '3' or record[22] == '-1' or record[24] == '-1': #둘중 하나만 -1이면 list에 안가져옴
-        continue
-    tmp_train = []
-    tmp_label = []
-    tmp_class = []
-    for n in range(0,18):
-        tmp_train.append(record[n])
-    for n in range(18,21):
-        tmp_label.append(record[n])
-    tmp_class.append(int(record[22]))
-    tmp_class.append(int(record[24]))
-    x_data.append(tmp_train)
-    y_data.append(tmp_label)
-    classifier.append(tmp_class)
-
-
-train_size = len(x_data[0])
-label_size = len(y_data[0])
-
+################## 바꿔줘야 할 부분########################
 batter_class_num = 10
 pitcher_class_num = 6
 
+player_data = open('../playerInfo/test/doosanbears/오재원.csv', 'rt')
+player_reader = csv.reader(player_data)
+
+batter_index = 9 #batter
+################## 바꿔줘야 할 부분########################
+
+player_split = [] #틀 만들기
+for i in range(pitcher_class_num):
+    pit_block = []
+    for j in range(3):
+        inn_block = []
+        for k in range(3):
+            out_block = []
+            for l in range(2):
+                base_block = []
+                out_block.append(base_block)
+            inn_block.append(out_block)
+        pit_block.append(inn_block)
+    player_split.append(pit_block)
+
+
+# 000 000 00 - 000 - b bc p pc
+# player_split[pitcher][inning][out][base] -> 0,1,2 (out, hit, go)
+# 0 1 2 -> inning , 3 4 5 -> out count , 6 7 -> base o/x
+for record in player_reader:
+    if record[0] == '1 - 3 inning' or record[12] == '-1' or record[14] == '-1': #둘중 하나만 -1이면 list에 안가져옴
+        continue
+    pit_index = int(record[14])
+    inn_index = getIndex(record[0:3])
+    out_index = getIndex(record[3:6])
+    base_index = getIndex(record[6:8])
+    result = getIndex(record[8:11])
+    player_split[pit_index][inn_index][out_index][base_index].append(result) #틀 채우기
+
+
+################################################################## model part
+def decode(i,j,k,l):
+    list = []
+    for x in range(0,3): #inning
+        if x == j:
+            list.append(1)
+        else :
+            list.append(0)
+    for x in range(0,3): #out
+        if x == k:
+            list.append(1)
+        else :
+            list.append(0)
+    for x in range(0,2): #base
+        if x == l:
+            list.append(1)
+        else :
+            list.append(0)
+    return i, list
+
+train_size = 8
+label_size = 3
+
 x = tf.placeholder("float", [None,train_size])
 y = tf.placeholder("float", [None,label_size])
-w = tf.Variable(tf.truncated_normal(shape=[train_size, label_size], stddev=5e-2), name='weight')
-b = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias')
+keep_prob = tf.placeholder(tf.float32)
 
-logits = tf.matmul(x,w)+b
+w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight')
+b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+h_fc1 = tf.nn.relu(tf.matmul(x, w_1) + b_1)
+h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
+
+w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight')
+b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias')
+h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, w_2) + b_2)
+h_fc2_drop = tf.nn.dropout(h_fc2, keep_prob)
+
+w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight')
+b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+h_fc3 = tf.nn.relu(tf.matmul(h_fc2_drop, w_3) + b_3)
+h_fc3_drop = tf.nn.dropout(h_fc3, keep_prob)
+
+w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight')
+b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias')
+logits = tf.matmul(h_fc3_drop,w_4)+b_4
 y_pred = tf.nn.softmax(logits)
+
 loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits))
 train_step = tf.train.GradientDescentOptimizer(1e-3).minimize(loss)
 
 saver = tf.train.Saver()
-
-with tf.Session() as sess:
-    splitClass = []
-    for i in range(batter_class_num):
-        v = []
-        for j in range(pitcher_class_num):
-            tmp = []
-            v.append(tmp)
-        splitClass.append(v)
-
-    text_list = []
-    for i in range(len(x_data)):
-        batter_index = classifier[i][0]
-        pitcher_index = classifier[i][1]
-        saver.restore(sess, './models/'+str(batter_index)+'-'+str(pitcher_index)+'.ckpt')
-        #print(sess.run(w)) 모델별로 다른 w값 가짐을 확인
-        tmp = []
-        tmp.append(x_data[i])
-        pred = sess.run(y_pred, feed_dict={x:tmp}) #결과
-        hit = pred[0][1]
-        go = 1 - pred[0][0]
-        block = []
-        block.append(hit)
-        block.append(go)
-        block.append(getResult(y_data[i]))
-        splitClass[batter_index][pitcher_index].append(block)
-        s = '예측 타율 : '+str(round(hit, 3))+', 예측 출루율 : '+str(round(go,3))+' -> 실제 결과 : '+getResult(y_data[i])
-        text_list.append(s)
-    showSplitClass(batter_class_num, pitcher_class_num, text_list, classifier)
-    #showLimit(batter_class_num,pitcher_class_num,splitClass)
-
-        #print("예측 타율 : %.3f , 예측 출루율 : %.3f  -> 실제결과 : %s" % (hit,go,getResult(y_data[i])))
-
-        #print(pred,' - ',y_data[i])약식 표현
-
-
-#한화 sk 타자 투수 정보 수집, 기존 체계에 추가시키기
-#2018, 2019자료 사용
-#입력 데이터 어떻게 받아올지 생각
-#받아 온 데이터 숫자만큼 세션 활성화 시켜서 결과 뽑아내기
-#뽑아 낸 결과 어떻게 웹 페이지로 보낼 지 생각
-#결과 검증으 어떻게 할지 생각..
+for i in range(pitcher_class_num): #pitcher
+    for j in range(3): #inning
+        for k in range(3): #out
+            for l in range(2): #base
+                if len(player_split[i][j][k][l]) <= 5:
+                    continue
+                real_hit, real_go = getHit(player_split[i][j][k][l])#해당 상황에서의 타율, 출루율 계산
+                pitcher_index, input_x = decode(i,j,k,l) #임의로 입력
+                with tf.Session() as sess:
+                    saver.restore(sess, './models/'+str(batter_index)+'-'+str(pitcher_index)+'.ckpt')
+                    tmp = []
+                    tmp.append(input_x)
+                    pred = sess.run(y_pred, feed_dict={x:tmp, keep_prob:1.0}) #결과
+                    pred_hit = pred[0][1]
+                    pred_go = 1 - pred[0][0]
+                    print("pitcher class : %d , inning : %d , out : %d , base : %d - case size : %d"%(i,j,k,l,len(player_split[i][j][k][l])))
+                    print("예측) 타율 : %.3f , 출루율 : %.3f - > 실제) 타율 : %.3f , 출루율 : %.3f\n"%(pred_hit,pred_go,real_hit,real_go))
