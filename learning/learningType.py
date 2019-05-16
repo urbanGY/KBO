@@ -25,7 +25,8 @@ for i in range(batter_class_num):
 
 #위에서 생성한 틀에 맞춰서 학습시켜야 할 내용 체움
 teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
-fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
+#fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass'] default
+fieldnames = ['1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_o','base_x','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 #21 b_name, 22 b_class, 23 p_name, 24 p_class
 for team in teamName:
     team_f = open('../crollingPart/teamList/batter/' + team + '_b.csv', 'rt')
@@ -36,15 +37,15 @@ for team in teamName:
         player_data = open('../playerInfo/train/' + team + '/'+ line[0] +'.csv', 'rt')
         player_reader = csv.reader(player_data)
         for record in player_reader:
-            if record[0] == '3' or record[22] == '-1' or record[24] == '-1': #둘중 하나만 -1이면 list에 안가져옴
+            if record[0] == '1 - 3 inning' or record[12] == '-1' or record[14] == '-1': #둘중 하나만 -1이면 list에 안가져옴
                 continue
-            bat_index = int(record[22])
-            pit_index = int(record[24])
+            bat_index = int(record[12])
+            pit_index = int(record[14])
             tmp_train = []
             tmp_label = []
-            for n in range(0,18):
+            for n in range(0,8):
                 tmp_train.append(record[n])
-            for n in range(18,21):
+            for n in range(8,11):
                 tmp_label.append(record[n])
             trainList[bat_index][pit_index].append(tmp_train)
             labelList[bat_index][pit_index].append(tmp_label)
@@ -52,6 +53,7 @@ for team in teamName:
 
 train_size = len(trainList[0][0][0]) #학습시킬 속성 차원 수
 label_size = len(labelList[0][0][0]) #결과 차원 수
+
 
 
 #각 유형별 학습을 진행해 각각의 model을 생성한다
