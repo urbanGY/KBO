@@ -5,29 +5,19 @@ import csv
 
 kmeans = KMeans(n_clusters=10, n_init = 2000)
 
-headerList = ['이름', '홈런%', '볼넷%', '삼진%', '절대장타율', '타석','안타','2루타','3루타','홈런','볼넷','삼진', '타율', '출루율', '장타율', '뜬/땅', 'RAA']
-df = pd.DataFrame(columns=(headerList[5], headerList[6], headerList[7], headerList[8], headerList[9], headerList[10], headerList[11]))
+headerList = ['이름', 'G', '타석', '타수', '득점', '안타','2타','3타','홈런','루타','타점','볼넷', '사구', '고4', '삼진']
+df = pd.DataFrame(columns=(headerList[1], headerList[2], headerList[3], headerList[4], headerList[5], headerList[6], headerList[7], headerList[8], headerList[9], headerList[10], headerList[11], headerList[12], headerList[13], headerList[14]))
 
-f = open('../crollingPart/test.csv', 'rt')
+f = open('../crollingPart/batter.csv', 'rt')
 reader = csv.reader(f)
 i = 0
 name = []
 
 for line in reader:
-    if len(line) > 0 and line[0] != '이름':
-        index = i
-        for j in range(0, len(name)):
-            if name[j] == line[0]:
-                index = j
-
-        if index == i :
-            name.append(line[0])
-            df.loc[i] = [float(line[6]), float(line[7]), float(line[8]), float(line[9]), float(line[10]), float(line[11]), float(line[12])]
-            i = i + 1
-        else:
-            for j in range(6, 13):
-                df.loc[index][j - 6] = df.loc[index][j - 6] + float(line[j])
-
+    if len(line) > 0 and line[0] != '이름' and float(line[2]) >= 100:
+        name.append(line[0])
+        df.loc[i] = [float(line[1]), float(line[2]), float(line[3]), float(line[4]), float(line[5]), float(line[6]), float(line[7]), float(line[8]), float(line[9]), float(line[10]), float(line[11]), float(line[12]), float(line[13]), float(line[14])]
+        i = i + 1
 f.close()
 
 
