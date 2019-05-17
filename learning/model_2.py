@@ -14,9 +14,7 @@ def getHit(list):
             out_cnt += 1
         if n == 1:
             hit_cnt += 1
-    hit = hit_cnt/len(list)
-    go = 1-(out_cnt/len(list))
-    return hit, go
+    return hit_cnt, out_cnt, len(list)
 
 ################## 바꿔줘야 할 부분########################
 batter_class_num = 5
@@ -110,12 +108,18 @@ train_step = tf.train.GradientDescentOptimizer(1e-3).minimize(loss)
 saver = tf.train.Saver()
 value = 0
 for i in range(pitcher_class_num): #pitcher
+    pit_h = 0
+    pit_o = 0
+    pit_s = 0
     for j in range(3): #inning
         for k in range(3): #out
             for l in range(2): #base
-                if len(player_split[i][j][k][l]) <= 10:
+                if len(player_split[i][j][k][l]) == 0:
                     continue
-                real_hit, real_go = getHit(player_split[i][j][k][l])#해당 상황에서의 타율, 출루율 계산
+                hit, out, size_cnt = getHit(player_split[i][j][k][l])#해당 상황에서의 타율, 출루율 계산
+                pit_h += hit
+                pit_o += out
+                pit_s += size_cnt
                 pitcher_index, input_x = decode(i,j,k,l) #임의로 입력
                 with tf.Session() as sess:
                     saver.restore(sess, './models/'+str(batter_index)+'-'+str(pitcher_index)+'.ckpt')
@@ -124,7 +128,9 @@ for i in range(pitcher_class_num): #pitcher
                     pred = sess.run(y_pred, feed_dict={x:tmp, keep_prob:1.0}) #결과
                     pred_hit = pred[0][1]
                     pred_go = 1 - pred[0][0]
-                    value += (real_go - pred_go) ** 2
                     print("pitcher class : %d , inning : %d , out : %d , base : %d - case size : %d"%(i,j,k,l,len(player_split[i][j][k][l])))
-                    print("예측) 타율 : %.3f , 출루율 : %.3f - > 실제) 타율 : %.3f , 출루율 : %.3f\n"%(pred_hit,pred_go,real_hit,real_go))
+                    print("예측) 타율 : %.3f , 출루율 : %.3f"%(pred_hit,pred_go))
+    if pit_s == 0:
+        continue                
+    print("실제) 타율 : %.3f , 출루율 : %.3f\n"%(pit_h/pit_s,1 - (pit_o/pit_s)))
 print(value)
