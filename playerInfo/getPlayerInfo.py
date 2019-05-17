@@ -20,7 +20,7 @@ def get_data(url):
     return data
 
 
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
+teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
 #yearList = ['2017','2016','2015','2014']
 fieldnames = ['date','opponent','inning','pitcher','p_class','batter','b_class','P','result','before']
 

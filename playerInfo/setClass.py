@@ -3,7 +3,7 @@ import csv
 batter_class_num = 4
 pitcher_class_num = 4
 
-teamName = ['doosanbears','kiatigers','kiwoomheros','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
+teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions']
 fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
 batter_class_f = open('../clustering/clusterOutput/classification.csv', mode='rt',newline='')#기존 train file 가져옴
