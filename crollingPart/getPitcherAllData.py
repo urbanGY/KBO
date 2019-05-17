@@ -2,7 +2,7 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 
-fieldNames = ['이름', '출장', '완투', '완봉', '선발', '승', '패', '세', '홀드', '이닝', '실점', '자책', '타자', '안타', '홈런', '볼넷', '고4', '사구', '삼진', '보크', '폭투']
+fieldNames = ['이름', '출장', '완투', '완봉', '선발', '승', '패', '세', '홀드', '이닝', '실점', '자책', '타자', '안타', '홈런', '볼넷', '고4', '사구', '삼진', '보크', '폭투', 'WHIP', 'ERA+', 'FIP+']
 
 teamList = ['doosanbears', 'hanwhaeagles', 'kiatigers', 'kiwoomheroes', 'ktwiz', 'lgtwins', 'lottegiants', 'ncdinos', 'samsunglions', 'skwyverns']
 writeFile = open("pitcher.csv", "wt", newline="")
@@ -29,12 +29,17 @@ for team in teamList:
                             fields.append(float(p))
                         except ValueError:
                             fields.append(0)
-                    elif index == 21:
+                    elif 23 <= index and index <= 25: 
+                        try:
+                            fields.append(float(p))
+                        except ValueError:
+                            fields.append(0)
+                    elif index == 26:
                         flag = False
                 if line.previous_element == '통산':
                     flag = True
                     index = 0
-            
+                    
             if len(fields) == len(fieldNames):
                 csvheaderwriter.writerow(fields)
             else:
