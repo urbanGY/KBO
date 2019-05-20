@@ -5,8 +5,8 @@ print('import np, tf, csv complelte!')
 
 
 #유형별 학습시킬 list 분리 저장 ex) 타자 유형 1, 투수 유형 3의 trainList는 trainList[1][3] 으로 접근 가능한 틀 생성
-batter_class_num = 10
-pitcher_class_num = 6
+batter_class_num = 5
+pitcher_class_num = 5
 
 trainList = []
 labelList = []
@@ -103,9 +103,9 @@ for batter_index in range(batter_class_num):
             sess.run(tf.global_variables_initializer())
             sess.run(iterator.initializer)
             print('[',batter_index,']','[',pither_index,'] learning start !')
-            for i in range(t_size*16):
+            for i in range(t_size*8):
                 x_data, y_data = sess.run(next_element)
-                if i == 0 or i == (t_size*16)-1:
+                if i == 0 or i == (t_size*8)-1:
                     loss_print = sess.run(loss, feed_dict={x: x_data, y: y_data, keep_prob: 1.0})
                     predict_y = sess.run(y_pred, feed_dict={x:x_data, keep_prob: 1.0})
                     print("predict : ",predict_y[0]," , real : ",y_data[0])
