@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>main Page</title>
+  </head>
+  <body>
+    <h1>This is main Page!</h1>
+    <form action="./result/" method="post">{% csrf_token %}
+      <legend> Test form </legend>
+      <input type="text"/> <br/>
+      <input type="text"/> <br/>
+      <input type="submit" value="submit">
+    </form>
+  </body>
+</html>
