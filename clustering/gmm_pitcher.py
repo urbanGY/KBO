@@ -3,24 +3,27 @@ import pandas as pd
 import numpy as np
 import csv
 
-gmm = mixture.GaussianMixture(n_components=4, covariance_type='full', n_init=2000)
-headerList = ['이름', 'G', '타석', '타수', '득점', '안타','2타','3타','홈런','루타','타점','볼넷', '사구', '고4', '삼진', '타율', '출루', '장타', 'OPS']
-df = pd.DataFrame(columns=(headerList[15:]))
+headerList = ['이름', '출장', '완투', '완봉', '선발', '승','패','세','홀드','이닝','실점','자책', '타자', '안타', '홈런', '볼넷', '고4', '사구', '삼진', '보크', '폭투', 'WHIP', 'ERA+', 'FIP+']
+df = pd.DataFrame(columns=(headerList[1:]))
 
-f = open('../crollingPart/batter.csv', 'rt')
+f = open('../crollingPart/pitcher.csv', 'rt')
 reader = csv.reader(f)
 i = 0
 name = []
 
 for line in reader:
-    if len(line) > 0 and line[0] != '이름' and float(line[2]) >= 150:
+    if len(line) > 0 and line[0] != '이름' and float(line[9]) >= 50:
         name.append(line[0])
         tmp = []
-        for j in range(15, len(line)):
-            tmp.append(float(line[j]))
+        for j in range(1, len(line)):
+                tmp.append(float(line[j]))
         df.loc[i] = tmp
         i = i + 1
+
 f.close()
+
+gmm = mixture.GaussianMixture(n_components=10, covariance_type='full', n_init=2000)
+
 
 gmm.fit(df)
 factor = gmm.predict(df)
@@ -41,7 +44,7 @@ for zcv in result:
         if maxLen < len(zcv):
                 maxLen = len(zcv)
 
-f = open('./clusterOutput/classification_batter_3.csv', mode = 'wt', newline = '')
+f = open('./clusterOutput/classification_pitcher_3.csv', mode = 'wt', newline = '')
 field = []
 for i in range(0, len(result)):
         field.append(i)
@@ -58,4 +61,4 @@ for i in range(0, maxLen):
                         tmp[j] = result[j][i]
         csv_writer.writerow(tmp)
 
-f.close()  
+f.close()
