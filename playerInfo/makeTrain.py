@@ -93,9 +93,9 @@ teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegia
 #fieldnames = ['3','4','5','6','7','8','9','10','11','1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_1','base_2','base_3','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass'] default
 fieldnames = ['1 - 3 inning','4 - 6 inning','7 - ? inning','no out','1 out','2 out','base_o','base_x','out','hit','ball','batterName','batterClass','pitcherName','pitcherClass']
 
-batter_class_f = open('../clustering/clusterOutput/classification_batter.csv', mode='rt',newline='')#기존 train file 가져옴
+batter_class_f = open('../clustering/clusterOutput/classification_batter_2.csv', mode='rt',newline='')#기존 train file 가져옴
 batter_class_reader = list(csv.reader(batter_class_f))#타자 class dictionary
-pitcher_class_f = open('../clustering/clusterOutput/classification_pitcher.csv', mode='rt',newline='')#기존 train file 가져옴
+pitcher_class_f = open('../clustering/clusterOutput/classification_pitcher_2.csv', mode='rt',newline='')#기존 train file 가져옴
 pitcher_class_reader = list(csv.reader(pitcher_class_f))#투수 class dictionary
 
 batter_class_num = len(batter_class_reader[0])
