@@ -61,23 +61,23 @@ x = tf.placeholder("float", [None,train_size])
 y = tf.placeholder("float", [None,label_size])
 keep_prob = tf.placeholder(tf.float32)
 
-w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight')
-b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight_1')
+b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_1')
 h_fc1 = tf.nn.relu(tf.matmul(x, w_1) + b_1)
 h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
 
-w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight')
-b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias')
+w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight_2')
+b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias_2')
 h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, w_2) + b_2)
 h_fc2_drop = tf.nn.dropout(h_fc2, keep_prob)
 
-w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight')
-b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias')
+w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight_3')
+b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_3')
 h_fc3 = tf.nn.relu(tf.matmul(h_fc2_drop, w_3) + b_3)
 h_fc3_drop = tf.nn.dropout(h_fc3, keep_prob)
 
-w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight')
-b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias')
+w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight_4')
+b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias_4')
 logits = tf.matmul(h_fc3_drop,w_4)+b_4
 y_pred = tf.nn.softmax(logits)
 
@@ -98,10 +98,10 @@ for batter_index in range(batter_class_num):
         iterator = dataset.make_initializable_iterator()
         next_element = iterator.get_next()
 
-        saver = tf.train.Saver()
         with tf.Session() as sess:
             sess.run(tf.global_variables_initializer())
             sess.run(iterator.initializer)
+            saver = tf.train.Saver()
             print('[',batter_index,']','[',pither_index,'] learning start !')
             for i in range(t_size*8):
                 x_data, y_data = sess.run(next_element)
