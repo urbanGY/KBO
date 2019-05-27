@@ -94,32 +94,35 @@ def getRealHit(batter_name, pitcher_name):
     go = 1 - (out_cnt/cnt)
     return str(round(hit,3)), str(round(go,3))
 
-def runModel(input):
+def runModel(input, checker):
     train_size = 8
     label_size = 3
 
     x = tf.placeholder("float", [None,train_size])
     y = tf.placeholder("float", [None,label_size])
     keep_prob = tf.placeholder(tf.float32)
-
-    w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight_1')
-    b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_1')
-    h_fc1 = tf.nn.relu(tf.matmul(x, w_1) + b_1)
+    if checker == 1:
+        runModel.w_1 = tf.Variable(tf.truncated_normal(shape=[train_size, train_size*2], stddev=5e-2), name='weight_1')
+        runModel.b_1 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_1')
+    h_fc1 = tf.nn.relu(tf.matmul(x, runModel.w_1) + runModel.b_1)
     h_fc1_drop = tf.nn.dropout(h_fc1, keep_prob)
 
-    w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight_2')
-    b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias_2')
-    h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, w_2) + b_2)
+    if checker == 1:
+        runModel.w_2 = tf.Variable(tf.truncated_normal(shape=[train_size*2, train_size*3], stddev=5e-2), name='weight_2')
+        runModel.b_2 = tf.Variable(tf.constant(0.1, shape=[train_size*3]), name='bias_2')
+    h_fc2 = tf.nn.relu(tf.matmul(h_fc1_drop, runModel.w_2) + runModel.b_2)
     h_fc2_drop = tf.nn.dropout(h_fc2, keep_prob)
 
-    w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight_3')
-    b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_3')
-    h_fc3 = tf.nn.relu(tf.matmul(h_fc2_drop, w_3) + b_3)
+    if checker == 1:
+        runModel.w_3 = tf.Variable(tf.truncated_normal(shape=[train_size*3, train_size*2], stddev=5e-2), name='weight_3')
+        runModel.b_3 = tf.Variable(tf.constant(0.1, shape=[train_size*2]), name='bias_3')
+    h_fc3 = tf.nn.relu(tf.matmul(h_fc2_drop, runModel.w_3) + runModel.b_3)
     h_fc3_drop = tf.nn.dropout(h_fc3, keep_prob)
 
-    w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight_4')
-    b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias_4')
-    logits = tf.matmul(h_fc3_drop,w_4)+b_4
+    if checker == 1:
+        runModel.w_4 = tf.Variable(tf.truncated_normal(shape=[train_size*2, label_size], stddev=5e-2), name='weight_4')
+        runModel.b_4 = tf.Variable(tf.constant(0.1, shape=[label_size]), name='bias_4')
+    logits = tf.matmul(h_fc3_drop,runModel.w_4)+runModel.b_4
     y_pred = tf.nn.softmax(logits)
 
     loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=logits))
@@ -140,8 +143,12 @@ def runModel(input):
     print('input x : ',input_x)
     _url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\learning\\models\\"
     with tf.Session() as sess:
-        saver = tf.train.Saver()
-        saver.restore(sess, _url +str(batter_index)+'-'+str(pitcher_index)+'.ckpt')
+        print('checker : ',checker)
+        if checker == 1:
+            print('first time!!!!')
+            runModel.saver = tf.train.Saver()
+        runModel.saver.restore(sess, _url +str(batter_index)+'-'+str(pitcher_index)+'.ckpt')
+
         tmp = []
         tmp.append(input_x)
         pred = sess.run(y_pred, feed_dict={x:tmp, keep_prob:1.0}) #결과
