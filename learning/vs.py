@@ -26,6 +26,7 @@ def GetData(batter, birth, pitcher):
             BB = (int)(data[(i) * 24 + 11].get_text()) + (int)(data[(i) * 24 + 12].get_text()) + (int)(data[(i) * 24 + 13].get_text())
             BB = str(BB)
             avg = (float)(data[(i) * 24 + 18].get_text())
+            obp = (float)(data[(i) * 24 + 19].get_text())
             #print(batter+"의 "+pitcher+" 상대 통산 전적은 "+PA+"타석 "+AB+"타수 "+Hit+"안타 "+BB+"사사구 "+HR+"홈런입니다.")
-            print(batter+"의 "+pitcher+" 상대 통산 타율은 "+str(avg)+" 입니다.")
-    return avg
+            print(batter+"의 "+pitcher+" 상대 통산 타율은 "+str(avg)+" 출루율은 "+str(obp)+" 입니다.")
+    return avg, obp

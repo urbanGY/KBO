@@ -5,8 +5,8 @@ print('import np, tf, csv complelte!')
 
 
 #유형별 학습시킬 list 분리 저장 ex) 타자 유형 1, 투수 유형 3의 trainList는 trainList[1][3] 으로 접근 가능한 틀 생성
-batter_class_num = 5
-pitcher_class_num = 5
+batter_class_num = 8
+pitcher_class_num = 7
 
 trainList = []
 labelList = []

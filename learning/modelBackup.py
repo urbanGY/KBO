@@ -92,6 +92,7 @@ def getRealHit(batter_name, pitcher_name):
                 hit_cnt += 1
     hit = hit_cnt/cnt
     go = 1 - (out_cnt/cnt)
+    player_f.close()
     return str(round(hit,3)), str(round(go,3))
 
 def runModel(input, checker):
@@ -156,8 +157,9 @@ def runModel(input, checker):
         hit = pred[0][1]
         go = 1 - pred[0][0] #예측 부분
 
-        vs_hit = vs.GetData(batter_name,get_batter_birth(batter_name),pitcher_name)
+        vs_hit, vs_go = vs.GetData(batter_name,get_batter_birth(batter_name),pitcher_name)
         hit = (hit *0.85)+(vs_hit*0.15)
+        go = (go *0.85)+(vs_go*0.15)
 
         output = []
         output.append(str(round(hit, 3))) #예측 타율
