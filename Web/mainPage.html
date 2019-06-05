@@ -1,0 +1,113 @@
+
+<!--
+
+경기 초,중,후반 : 1~3
+주자 유무 : T/F
+이때 넘기는 파라미터들이 int, bool 등으로 전달이 되는지 텍스트로 전달이 되는지는 모르겠음.
+
+member.php?batter=타자이름&pitcher=투수이름&outCount=0&step_val=&runner_val=
+submit 버튼을 누르면 member.php(서버, 형이 이름만 바꿔주면 돼요. 전달 방식은 get임 -> 주소 패싱 해서 값 읽기)
+타자이름, 투수이름, 아웃카운트(0~2), step_val = 1~3 초중반, runner_val = 주자있으면 true 없으면 false)
+요렇게 서버로 넘깁니다.
+
+-->
+
+
+<html>
+<head>
+  <meta 18.1%"viewport" conte45.59%idth=device-width, minimum-scale=0.1">
+  <title>
+    GO TWINS GO - KBO PREDICT PROJECT
+  </title>
+  <script>
+
+		function change(obj) {
+			var style = window.getComputedStyle(obj);
+			var b = style.getPropertyValue("background-color");
+
+      var temp = document.myform.step1;
+      temp.style.background = "white";
+      var temp = document.myform.step2;
+      temp.style.background = "white";
+      var temp = document.myform.step3;
+      temp.style.background = "white";
+
+
+			if(rgb2hex(b) == '#ffffff') {
+				obj.style.background = '#9af1e8';
+        var temp = document.myform.step_val;
+        temp.value = obj.value;
+			} else {
+				obj.style.background="white";
+        obj.value = "0";
+			}
+		}
+    function change2(obj) {
+      var style = window.getComputedStyle(obj);
+      var b = style.getPropertyValue("background-color");
+
+      var temp = document.myform.isRunner;
+      temp.style.background = '#2e2e2e';
+      var temp = document.myform.noRunner;
+      temp.style.background = '#2e2e2e';
+
+
+      if(rgb2hex(b) == '#2e2e2e') {
+        obj.style.background = '#9af1e8';
+        var temp = document.myform.runner_val;
+        temp.value = obj.value;
+      }
+      else {
+        obj.style.background='#2e2e2e';
+        obj.value = "0";
+      }
+    }
+
+		function rgb2hex(rgb) {
+		    rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+		    function hex(x) {
+		        return ("0" + parseInt(x).toString(16)).slice(-2);
+		    }
+		    return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+		}
+	</script>
+  </head>
+<body style=" background:#979595;">
+
+  <img style="text-align:center;width: 60%;height: 70%; margin-left: 20% ;margin-top: 6%;" src="./Background.png">
+  <form action="member.php" name ="myform" method="get">
+
+    <input type="text" value="타자이름" name="batter" style=" text-align:center; color:white;
+    position:absolute; opacity : 0.5; margin-top : -16.2%; margin-left: 26.2%; background-color:transparent; border: white; ">
+
+    <input type="submit" value="Submit" style = "margin-left : 44.8%; margin-top : -21.3%; height : 10.5%; width : 10%; background-color : yellow; opacity : 0;">
+
+    <input type="text" value="투수이름" name="pitcher" style=" text-align:center; color:white;
+    position:absolute; opacity : 0.5; margin-top : -16.2%; margin-left: 8.1%; background-color:transparent; border: white; ">
+
+    <input type="button" id="bt1" value="1" name="step1" onclick="change(this)" style=" text-align:center; height:9.3%; width : 7.3%; font-size: 95; color : transparent;
+    position:absolute; opacity : 0.5; margin-top : -8.4%; margin-left: -29.95%; background-color:white; border: RED;">
+
+    <input type="button" id="bt2" value="2" name="step2" onclick="change(this)" style=" text-align:center; height:9.3%; width : 8%; font-size: 95; color : transparent;
+    position:absolute; opacity : 0.5; margin-top : -8.4%; margin-left: -22.15%; background-color:white; border: RED; ">
+
+    <input type="button" id="bt3" value="3" name="step3" onclick="change(this)" style=" text-align:center; height:9.3%; width : 7.6%; font-size: 95; color : transparent;
+    position:absolute; opacity : 0.5; margin-top : -8.5%; margin-left: -13.4%; background-color:white; border: RED; ">
+
+    <input type="text" value="0" id ="OC" name="outCount" style=" text-align:center; color:white; height:10%; width : 5%; font-size: 95; color : red;
+    position:absolute; opacity : 1; margin-top : -8.6%; margin-left: -4.15%; background-color:transparent; border: white; ">
+
+    <input type="Button" id="bt4" value="true" name="isRunner" onclick="change2(this)" style=" text-align:center; height:9.3%; width : 3.6%; font-size: 95; color : transparent;
+    position:absolute; opacity : 0.1; margin-top : -8.5%; margin-left: 9.5%; background-color:#2e2e2e; border:white;">
+    <input type="Button" id="bt5" value="false" name="noRunner" onclick="change2(this)" style=" text-align:center; height:9.3%; width : 3.6%; font-size: 95; color : transparent;
+    position:absolute; opacity : 0.1; margin-top : -8.5%; margin-left: 16.3%; background-color:#2e2e2e; border:transparent;">
+
+    <input type="text" id="submit_step" name="step_val" style="position:absolute; opacity : 0; ">
+    <input type="text" id="submit_runner" name="runner_val" style="position:absolute; opacity : 0; ">
+
+  </form>
+
+</img>
+</body>
+</head>
+</html>
