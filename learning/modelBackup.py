@@ -23,6 +23,7 @@ def decode(j,k,l):
 
 def get_batter_class(name): #batter class 찾는 함수
     batter_url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\clustering\\clusterOutput\\classification_batter_2.csv"
+    # batter_url = "../clustering/clusterOutput/classification_batter_2.csv"
     batter_class_f = open(batter_url, mode='rt',newline='')#기존 train file 가져옴
     batter_class_reader = list(csv.reader(batter_class_f))#타자 class dictionary
     batter_class_num = len(batter_class_reader[0])
@@ -36,6 +37,7 @@ def get_batter_class(name): #batter class 찾는 함수
 
 def get_pitcher_class(name): #batter class 찾는 함수
     pitcher_url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\clustering\\clusterOutput\\classification_pitcher_2.csv"
+    # pitcher_url = "../clustering/clusterOutput/classification_pitcher_2.csv"
     pitcher_class_f = open(pitcher_url, mode='rt',newline='')#기존 train file 가져옴
     pitcher_class_reader = list(csv.reader(pitcher_class_f))#투수 class dictionary
     pitcher_class_num = len(pitcher_class_reader[0])
@@ -49,6 +51,7 @@ def get_pitcher_class(name): #batter class 찾는 함수
 
 def get_batter_team(name):
     _url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\crollingPart\\teamList\\batter\\"
+    # _url = "../crollingPart/teamList/batter/"
     teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
     for team in teamName:
         team_f = open(_url + team + '_b.csv', 'rt')
@@ -60,6 +63,7 @@ def get_batter_team(name):
 
 def get_batter_birth(name):
     _url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\crollingPart\\teamList\\batter\\"
+    # _url = "../crollingPart/teamList/batter/"
     teamName = ['doosanbears','kiatigers','kiwoomheroes','ktwiz','lgtwins','lottegiants','ncdinos','samsunglions','hanwhaeagles','skwyverns']
     for team in teamName:
         team_f = open(_url + team + '_b.csv', 'rt')
@@ -71,6 +75,7 @@ def get_batter_birth(name):
 
 def getRealHit(batter_name, pitcher_name):
     _url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\playerInfo\\test\\"
+    # _url = "../playerInfo/test/"
     batter_class = get_batter_class(batter_name)
     pitcher_class = get_pitcher_class(pitcher_name)
     team = get_batter_team(batter_name)
@@ -143,6 +148,7 @@ def runModel(input, checker):
     input_x = decode(inning, out, base) #임의로 입력
     print('input x : ',input_x)
     _url = "C:\\Users\\sfsfk\\Desktop\\develope\\softWareProject\\BaseballPredict\\KBO\\learning\\models\\"
+    # _url = "./models/"
     with tf.Session() as sess:
         print('checker : ',checker)
         if checker == 1:
@@ -158,8 +164,9 @@ def runModel(input, checker):
         go = 1 - pred[0][0] #예측 부분
 
         vs_hit, vs_go = vs.GetData(batter_name,get_batter_birth(batter_name),pitcher_name)
-        hit = (hit *0.85)+(vs_hit*0.15)
-        go = (go *0.85)+(vs_go*0.15)
+        if(vs_hit != 0.0):
+            hit = (hit *0.85)+(vs_hit*0.15)
+            go = (go *0.85)+(vs_go*0.15)
 
         output = []
         output.append(str(round(hit, 3))) #예측 타율
